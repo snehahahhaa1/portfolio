@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sneha Karna's engineering portfolio">
+    <title>Sneha Karna | Engineering Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #07131f;
+            --bg-soft: #0e1c2c;
+            --panel: rgba(255, 255, 255, 0.03);
+            --panel-strong: rgba(255, 255, 255, 0.05);
+            --line: rgba(245, 42, 42, 0.08);
+            --text: #edf2f7;
+            --muted: #a8b4c3;
+            --accent: #ff6a4a;
+            --accent-2: #35c2a1;
+            --accent-3: #7aaef7;
+            --shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+            --radius: 22px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background:
+                radial-gradient(circle at top left, rgba(255, 106, 74, 0.11), transparent 30%),
+                radial-gradient(circle at top right, rgba(122, 174, 247, 0.08), transparent 26%),
+                linear-gradient(180deg, #08131f 0%, #0b1725 46%, #07131f 100%);
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            background: rgba(7, 19, 31, 0.82);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 18px 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .brand-mark {
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-3));
+            color: #fff;
+            box-shadow: 0 10px 22px rgba(255, 106, 74, 0.22);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 18px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .hero {
+            padding: 56px 0 34px;
+        }
+
+        .hero-shell {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .hero-copy,
+        .hero-photo {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+        }
+
+        .hero-copy {
+            padding: 38px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-2);
+            font-size: 0.86rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.45rem, 5vw, 4.35rem);
+            line-height: 0.96;
+            letter-spacing: -0.04em;
+            margin-bottom: 12px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.04rem;
+            color: #b5c0cd;
+            max-width: 62ch;
+            margin-bottom: 22px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .chip {
+            padding: 9px 13px;
+            border-radius: 999px;
+            background: var(--panel-strong);
+            border: 1px solid var(--line);
+            color: #dfe7f4;
+            font-size: 0.9rem;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 16px;
+            color: #d3dce7;
+            font-size: 0.96rem;
+        }
+
+        .contact-row a {
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+            transition: all 0.2s ease;
+        }
+
+        .contact-row a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--accent), var(--accent-3));
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(255, 106, 74, 0.25);
+        }
+
+        .hero-photo {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            min-height: 100%;
+        }
+
+        .hero-photo::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border-radius: calc(var(--radius) - 6px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            pointer-events: none;
+        }
+
+        .profile-frame {
+            width: min(100%, 360px);
+            aspect-ratio: 0.8;
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-photo {
+            width: 100%;
+            flex: 1;
+            object-fit: cover;
+            object-position: center 18%;
+            display: block;
+            background: #0f1c2b;
+        }
+
+        .profile-caption {
+            padding: 14px 16px 16px;
+            background: rgba(8, 18, 29, 0.88);
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .profile-caption strong {
+            display: block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .profile-caption span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        section {
+            padding: 30px 0;
+        }
+
+        section:first-of-type {
+            padding: 0;
+        }
+
+        .section-card {
+            padding: 28px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+            transition: all 0.3s ease;
+        }
+
+        .section-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+        }
+
+        .section-card + .section-card {
+            margin-top: 18px;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.45rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff;
+        }
+
+        h2::after {
+            content: '';
+            width: 36px;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-3));
+        }
+
+        .summary-p {
+            color: #d6dee8;
+            font-size: 1rem;
+            max-width: 80ch;
+        }
+
+        .card,
+        .project-card,
+        .skill-box {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover,
+        .project-card:hover,
+        .skill-box:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        .card {
+            margin-bottom: 16px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .card-header,
+        .card-subheader {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .card-header {
+            margin-bottom: 6px;
+        }
+
+        .card-title,
+        .project-card h3,
+        .skill-box h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #ffffff;
+        }
+
+        .card-title {
+            font-size: 1.08rem;
+            font-weight: 700;
+        }
+
+        .card-date,
+        .card-location,
+        .project-date {
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .card-subheader {
+            color: #d9e2ef;
+            font-style: normal;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 18px;
+            color: #d8e0ee;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .project-card {
+            border-top: 3px solid var(--accent-3);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .project-card h3 {
+            font-size: 1.02rem;
+            margin-bottom: 2px;
+        }
+
+        .project-date {
+            margin-bottom: 8px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 18px;
+        }
+
+        .skill-box {
+            border-top: 3px solid var(--accent-2);
+        }
+
+        .skill-box h3 {
+            font-size: 0.98rem;
+            margin-bottom: 8px;
+        }
+
+        .skill-box p {
+            color: #d0d9e7;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent), #ff8866);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 106, 74, 0.25);
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 106, 74, 0.35);
+            background: linear-gradient(135deg, #ff8866, #ff6a4a);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            margin-top: 20px;
+            align-items: center;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .highlight-stat {
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .highlight-stat strong {
+            display: block;
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+
+        .highlight-stat span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .about-summary {
+            margin-top: 20px;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid var(--accent-2);
+            border-radius: 8px;
+        }
+
+        footer {
+            padding: 26px 0 38px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.92rem;
+        }
+
+        footer a {
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .footer-contact {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .footer-socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-socials a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 900px) {
+            .hero-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-photo {
+                min-height: 400px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .about-highlights {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                justify-content: flex-start;
+                gap: 14px 16px;
+            }
+
+            .hero {
+                padding-top: 38px;
+            }
+
+            .hero-copy,
+            .section-card {
+                padding: 20px;
+            }
+
+            .card-header,
+            .card-subheader {
+                flex-direction: column;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .footer-socials {
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .container {
+                width: min(100% - 20px, 1160px);
+            }
+
+            .hero-photo {
+                min-height: 340px;
+            }
+
+            .profile-frame {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="container nav-inner">
+            <div class="brand">
+                <span class="brand-mark">SK</span>
+                <span>Sneha Karna</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero" id="about">
+            <div class="container hero-shell">
+                <div class="hero-copy">
+                    <div class="eyebrow">Engineering Student Portfolio</div>
+                    <h1 class="hero-title">Sneha Karna</h1>
+                    <p class="hero-subtitle">Electronics, Communication, and Information Engineering student focused on embedded systems, technical leadership, product thinking, and practical problem solving.</p>
+                    <div class="hero-meta" aria-label="focus areas">
+                        <span class="chip">Embedded Systems</span>
+                        <span class="chip">IoT & Automation</span>
+                        <span class="chip">Flutter Development</span>
+                        <span class="chip">Team Leadership</span>
+                    </div>
+                    <div class="contact-row">
+                        <span>+977 984-0171222</span>
+                        <a href="mailto:karnasneha296@gmail.com">karnasneha296@gmail.com</a>
+                        <span>Biratnagar, Nepal</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/snehahahhaa1" target="_blank" rel="noreferrer" title="Facebook" class="social-icon">f</a>
+                        <a href="https://www.instagram.com/snehahahhaa90?igsh=YjZlOHR1dWRvc3ht" target="_blank" rel="noreferrer" title="Instagram" class="social-icon">📷</a>
+                        <a href="https://www.linkedin.com/in/snehaakarna/" target="_blank" rel="noreferrer" title="LinkedIn" class="social-icon">in</a>
+                        <a href="https://github.com/snehahahhaa1" target="_blank" rel="noreferrer" title="GitHub" class="social-icon">⚙</a>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="Sneha_Karna_CV.pdf" class="cta-button" download>📥 Download CV</a>
+                        <a href="#education" class="cta-button" style="background: rgba(255, 255, 255, 0.08); color: #ffffff;">Explore Work ↓</a>
+                    </div>
+                </div>
+                <div class="hero-photo" aria-label="Profile photo">
+                    <div class="profile-frame">
+                        <img class="profile-photo" src="snehaphoto2.jpeg" alt="Sneha Karna profile photo">
+                        <div class="profile-caption">
+                            <strong>Engineering Student</strong>
+                            <span>Built for hardware, software, and organized execution.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container section-card">
+                <h2>About</h2>
+                <div class="about-highlights">
+                    <div class="highlight-stat">
+                        <strong>20+</strong>
+                        <span>Team Members Led</span>
+                    </div>
+                    <div class="highlight-stat">
+                        <strong>4+</strong>
+                        <span>Technical Projects</span>
+                    </div>
+                    <div class="highlight-stat">
+                        <strong>3+</strong>
+                        <span>Hackathon Participants</span>
+                    </div>
+                    <div class="highlight-stat">
+                        <strong>3</strong>
+                        <span>Core Competencies</span>
+                    </div>
+                </div>
+                <div class="about-summary">
+                    <p class="summary-p">Undergraduate engineering student with a solid background in electronics, software development, and project coordination. Experienced in managing technical teams, executing large-scale events, and leading creative public relations and branding campaigns for premier student tech societies. Proven leader serving as Vice President and Creative Lead, skilled in cross-functional collaboration and dedicated to deploying impactful technology and automation systems.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="container section-card">
+                <h2>Education</h2>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Tribhuvan University, Institute of Engineering, Purwanchal Campus</span>
+                        <span class="card-date">Feb 2024 - Present</span>
+                    </div>
+                    <div class="card-subheader">
+                        <span>Bachelor of Engineering in Electronics, Communication, and Information Engineering</span>
+                        <span class="card-location">Dharan, Nepal</span>
+                    </div>
+                    <ul>
+                        <li>Successfully coordinated and managed historic student events including CS50 AI Nepal and X-Hack 3.0.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">BKVM</span>
+                        <span class="card-date">Apr 2021 - Sep 2023</span>
+                    </div>
+                    <div class="card-subheader">
+                        <span>Secondary Level Education (10+2)</span>
+                        <span class="card-location">Biratnagar, Nepal</span>
+                    </div>
+                    <ul>
+                        <li>Major courses in Physics, Chemistry, Mathematics, and Computer Science.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container section-card">
+                <h2>Experience</h2>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">EXCESS (Electronics & Communication Engineering Student Society)</span>
+                        <span class="card-date">March 2026 - Present</span>
+                    </div>
+                    <div class="card-subheader">
+                        <span>Vice President - 13th Committee</span>
+                        <span class="card-location">Dharan, Nepal</span>
+                    </div>
+                    <ul>
+                        <li>Elected to executive leadership to steer strategic planning, financial oversight, and execution of comprehensive technical, cultural, and community engagement events.</li>
+                        <li>Coordinate closely with departmental heads to host premium workshops, seminars, and hackathons, ensuring an optimal competitive environment for 500+ student members.</li>
+                        <li>Strengthen community outreach and industrial connections by implementing robust communication channels and institutional networking campaigns.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Taranga: The Wave of Technology</span>
+                        <span class="card-date">Jan 2026 - Feb 2026</span>
+                    </div>
+                    <div class="card-subheader">
+                        <span>Creative Lead</span>
+                        <span class="card-location">Dharan, Nepal</span>
+                    </div>
+                    <ul>
+                        <li>Spearhead visual identity, thematic branding layouts, and public-facing design frameworks for flagship technological projects.</li>
+                        <li>Manage multi-platform official media channels, crafting highly engaging technical content that boosts digital outreach, conversion, and user participation.</li>
+                        <li>Collaborate directly with hardware and software engineering teams to translate complex engineering systems into intuitive visual narratives.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">CS50 AI Nepal</span>
+                        <span class="card-date">Oct 2024 - Jan 2025</span>
+                    </div>
+                    <div class="card-subheader">
+                        <span>Class Organizer & Peer Mentor</span>
+                        <span class="card-location">Dharan, Nepal</span>
+                    </div>
+                    <ul>
+                        <li>Assisted in conducting formalized CS50 AI classes, simplifying core artificial intelligence, search algorithms, and machine learning principles through interactive sessions.</li>
+                        <li>Mentored academic peers in project-building frameworks, debugging paradigms, and code compilation mechanics.</li>
+                        <li>Coordinated the grand CS50 Fair, facilitating project demonstrations to an audience of over 200+ technology enthusiasts, academics, and industry representatives.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">X-Hack 3.0 (EXCESS)</span>
+                        <span class="card-date">Nov 2024 - Jan 2025</span>
+                    </div>
+                    <div class="card-subheader">
+                        <span>Event Organizer & Logistics Lead</span>
+                        <span class="card-location">Dharan, Nepal</span>
+                    </div>
+                    <ul>
+                        <li>Successfully executed one of the largest hardware and software hackathons in the university circuit, bringing together more than 150 active participants.</li>
+                        <li>Managed rigorous logistical workflows, team distributions, mentor schedules, and hardware asset provisions to maintain uninterrupted 48-hour development sprints.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container section-card">
+                <h2>Projects</h2>
+                <div class="grid">
+                    <div class="project-card">
+                        <div>
+                            <h3>Women Safety & Journey Monitoring System</h3>
+                            <div class="project-date">Minor Project - Ongoing</div>
+                            <ul>
+                                <li>Developing an IoT-driven real-time smart safety ecosystem embedded with GPS tracking and SOS trigger logic.</li>
+                                <li>Integrating microcontrollers with wireless telemetry modules to seamlessly broadcast distress alerts and live coordinates.</li>
+                                <li>Building a sleek mobile dashboard with Flutter to map path routing metrics dynamically.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div>
+                            <h3>Solar-Powered Smart Insect Trap</h3>
+                            <div class="project-date">Delta 5.0 - Feb 2025</div>
+                            <ul>
+                                <li>Engineered a sustainable agricultural IoT unit achieving a 70% reduction in trial pest metrics.</li>
+                                <li>Programmed data processing micro-scripts in C and Python for environment sensor metrics.</li>
+                                <li>Configured optimized automation sleep thresholds improving power cycle efficiency by 50%.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div>
+                            <h3>Robotics & Hardware Setup</h3>
+                            <div class="project-date">Robotics Club IOEPC - Feb 2024</div>
+                            <ul>
+                                <li>Assembled and calibrated logic tracking metrics integrating ultrasonic arrays with active driver infrastructure.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container section-card">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-box">
+                        <h3>Languages</h3>
+                        <p>C, C++, Python, Dart</p>
+                    </div>
+                    <div class="skill-box">
+                        <h3>Web & Mobile</h3>
+                        <p>HTML, CSS, Flutter (App Development)</p>
+                    </div>
+                    <div class="skill-box">
+                        <h3>Hardware & IoT</h3>
+                        <p>Embedded Systems, Arduino IDE, Raspberry Pi, Sensor Integration, Automation</p>
+                    </div>
+                    <div class="skill-box">
+                        <h3>Management & Tools</h3>
+                        <p>Git/GitHub, VS Code, Content Creation, Team Leadership, Social Media Branding, Public Relations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container section-card">
+                <h2>Hobbies & Passions</h2>
+                <div class="grid">
+                    <div class="project-card" style="border-top-color: var(--accent-2);">
+                        <h3>Content Creation</h3>
+                        <p>Translating advanced electronics, coding paradigms, and hardware engineering concepts into lucid, accessible technical blogs.</p>
+                    </div>
+                    <div class="project-card" style="border-top-color: var(--accent-2);">
+                        <h3>Event Management</h3>
+                        <p>Deeply passionate about formatting, hosting, and coordinating university-level technological hackathons and bootcamps.</p>
+                    </div>
+                    <div class="project-card" style="border-top-color: var(--accent-2);">
+                        <h3>Performing Arts</h3>
+                        <p>Channeling creative thinking and choreographic expression through freestyle and cultural dance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-contact">
+                    <a href="mailto:karnasneha296@gmail.com">karnasneha296@gmail.com</a>
+                    <span>•</span>
+                    <span>+977 984-0171222</span>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/snehahahhaa1" target="_blank" rel="noreferrer" title="Facebook">f</a>
+                    <a href="https://www.instagram.com/snehahahhaa90?igsh=YjZlOHR1dWRvc3ht" target="_blank" rel="noreferrer" title="Instagram">📷</a>
+                    <a href="https://www.linkedin.com/in/snehaakarna/" target="_blank" rel="noreferrer" title="LinkedIn">in</a>
+                    <a href="https://github.com/snehahahhaa1" target="_blank" rel="noreferrer" title="GitHub">⚙</a>
+                </div>
+                <p>&copy; 2026 Sneha Karna. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

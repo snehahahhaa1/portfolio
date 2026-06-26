@@ -137,6 +137,35 @@
             padding: 38px;
         }
 
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            background: rgba(53, 194, 161, 0.15);
+            border: 1px solid rgba(53, 194, 161, 0.3);
+            color: var(--accent-2);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .availability-badge::before {
+            content: '●';
+            font-size: 0.8rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
         .eyebrow {
             display: inline-flex;
             align-items: center;
@@ -473,6 +502,30 @@
             background: linear-gradient(135deg, #ff8866, #ff6a4a);
         }
 
+        .cta-button-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        .cta-button-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
         .hero-actions {
             display: flex;
             gap: 14px;
@@ -513,6 +566,134 @@
             background: rgba(255, 255, 255, 0.02);
             border-left: 3px solid var(--accent-2);
             border-radius: 8px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(180deg, rgba(14, 28, 44, 0.95), rgba(8, 18, 29, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            width: min(500px, 90vw);
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            color: #ffffff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #ffffff;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(255, 106, 74, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--muted);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--accent), #ff8866);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 106, 74, 0.25);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 106, 74, 0.35);
+            background: linear-gradient(135deg, #ff8866, #ff6a4a);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
         }
 
         footer {
@@ -584,7 +765,8 @@
                 width: 100%;
             }
 
-            .cta-button {
+            .cta-button,
+            .cta-button-secondary {
                 width: 100%;
                 justify-content: center;
             }
@@ -624,7 +806,8 @@
                 width: 100%;
             }
 
-            .cta-button {
+            .cta-button,
+            .cta-button-secondary {
                 width: 100%;
                 justify-content: center;
             }
@@ -644,6 +827,10 @@
 
             .footer-socials {
                 gap: 8px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
             }
         }
 
@@ -683,9 +870,12 @@
         <section class="hero" id="about">
             <div class="container hero-shell">
                 <div class="hero-copy">
+                    <div class="availability-badge">
+                        ✓ Open for Internships & Collaborations
+                    </div>
                     <div class="eyebrow">Engineering Student Portfolio</div>
                     <h1 class="hero-title">Sneha Karna</h1>
-                    <p class="hero-subtitle">Electronics, Communication, and Information Engineering student focused on embedded systems, technical leadership, product thinking, and practical problem solving.</p>
+                    <p class="hero-subtitle">Electronics, Communication, and Information Engineering student focused on embedded systems, technical leadership, product thinking, and practical problem [...]
                     <div class="hero-meta" aria-label="focus areas">
                         <span class="chip">Embedded Systems</span>
                         <span class="chip">IoT & Automation</span>
@@ -705,7 +895,7 @@
                     </div>
                     <div class="hero-actions">
                         <a href="Sneha_Karna_CV.pdf" class="cta-button" download>📥 Download CV</a>
-                        <a href="#education" class="cta-button" style="background: rgba(255, 255, 255, 0.08); color: #ffffff;">Explore Work ↓</a>
+                        <button class="cta-button-secondary" onclick="openMessageModal()">💬 Send Message</button>
                     </div>
                 </div>
                 <div class="hero-photo" aria-label="Profile photo">
@@ -742,7 +932,8 @@
                     </div>
                 </div>
                 <div class="about-summary">
-                    <p class="summary-p">Undergraduate engineering student with a solid background in electronics, software development, and project coordination. Experienced in managing technical teams, executing large-scale events, and leading creative public relations and branding campaigns for premier student tech societies. Proven leader serving as Vice President and Creative Lead, skilled in cross-functional collaboration and dedicated to deploying impactful technology and automation systems.</p>
+                    <p class="summary-p">Undergraduate engineering student with a solid background in electronics, software development, and project coordination. Experienced in managing technical tea[...]</p>
+                    <p class="summary-p" style="margin-top: 12px;">I'm actively seeking internship opportunities and collaborations that allow me to apply my technical expertise in embedded systems, IoT, and software development while contributing to innovative projects.</p>
                 </div>
             </div>
         </section>
@@ -827,7 +1018,7 @@
                         <span class="card-location">Dharan, Nepal</span>
                     </div>
                     <ul>
-                        <li>Assisted in conducting formalized CS50 AI classes, simplifying core artificial intelligence, search algorithms, and machine learning principles through interactive sessions.</li>
+                        <li>Assisted in conducting formalized CS50 AI classes, simplifying core artificial intelligence, search algorithms, and machine learning principles through interactive sessions[...]
                         <li>Mentored academic peers in project-building frameworks, debugging paradigms, and code compilation mechanics.</li>
                         <li>Coordinated the grand CS50 Fair, facilitating project demonstrations to an audience of over 200+ technology enthusiasts, academics, and industry representatives.</li>
                     </ul>
@@ -954,5 +1145,81 @@
             </div>
         </div>
     </footer>
+
+    <!-- Message Modal -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Get in Touch</h2>
+                <button class="close-btn" onclick="closeMessageModal()">&times;</button>
+            </div>
+            <form id="messageForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="e.g., Internship Opportunity" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell me more about your proposal..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const messageModal = document.getElementById('messageModal');
+        const messageForm = document.getElementById('messageForm');
+
+        function openMessageModal() {
+            messageModal.classList.add('active');
+        }
+
+        function closeMessageModal() {
+            messageModal.classList.remove('active');
+            messageForm.reset();
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link with pre-filled subject and body
+            const mailtoLink = `mailto:karnasneha296@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
+            
+            window.location.href = mailtoLink;
+            
+            // Close modal after a short delay
+            setTimeout(() => {
+                closeMessageModal();
+            }, 500);
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === messageModal) {
+                closeMessageModal();
+            }
+        });
+
+        // Close modal with Escape key
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMessageModal();
+            }
+        });
+    </script>
 </body>
 </html>
